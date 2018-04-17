@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>添加文章</title>
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/simditor.css}" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navbar"><!--导航栏-->
+        <div class="container-fluid">
+            <div class="col-sm-2 text-center navbar-left">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="logo" href="#"
+                           style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-sm-10">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="pointer"><span class="glyphicon glyphicon-home"></span>&nbsp;Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" style="text-decoration: none">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <i class="badge">3</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="#myModal0">
+                                退出登陆
+                            </a>
+                            <!-- 模态框（Modal） -->
+                            <div class="modal fade" id="myModal0" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel0">
+                                                提示
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            确认登出吗?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                取消
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                登出
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/导航栏-->
+
+    <div class="row container-fluid">
+        <div class="col-sm-2"><!--左侧菜单-->
+            <div class="row">
+                <div class="user-img">
+                    <figure><img th:src="@{/images/portrait.jpg}" class="img-responsive img-circle img-thumbnail">
+                    </figure>
+                </div>
+                <div class="text-center pointer" style="padding-top: 10px">
+                    <a style="text-decoration: none">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人信息
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 30px">
+                <div class="navbar panel-group" id="box">
+                    <div class="panel text-center">
+                        <div class="panel-heading ">
+                            <a href="#" class="left-menu" style="text-decoration: none;">
+                                <span> 状态报告 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-hand-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseA" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none;">
+                                <span> 博文管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseA">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">文章列表</a></li>
+                                    <li><a href="#">文章添加</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseB" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none">
+                                <span> 相册管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseB">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">相册列表</a></li>
+                                    <li><a href="#">添加照片</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseC" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none">
+                                <span> 留言管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseC">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">留言列表</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--/左侧菜单-->
+
+        <div class="col-sm-10 bgcolor"><!--主体内容-->
+            <!--富文本编辑器-->
+            <div>
+                <textarea id="txt-content" placeholder="Balabala" autofocus></textarea>
+                <form>
+
+                    <input id="title" placeholder="请输入标题" name="title">
+                    <select id="type" name="type">
+
+                        <option value="0">生活</option>
+                        <option value="1">事业</option>
+                    </select>
+                    <input id="btn" type="button" value="提交" >
+                </form>
+            </div>
+        </div><!--主体内容-->
+    </div>
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom"><!--版权信息-->
+        <div class="container">
+            <p class="text-center">我是版权信息</p>
+        </div>
+    </nav><!--/版权信息-->
+
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/simditor/module.js}"></script>
+<script type="text/javascript" th:src="@{/js/simditor/hotkeys.js}"></script>
+<script type="text/javascript" th:src="@{/js/simditor/uploader.js}"></script>
+<script type="text/javascript" th:src="@{/js/simditor/simditor.js}"></script>
+<script type="text/javascript" th:src="@{/js/simditor/mobilecheck.js}"></script>
+<script type="text/javascript">
+    (function() {
+        $(function() {
+            var $preview, editor, mobileToolbar, toolbar;
+            Simditor.locale = 'en-US';
+            toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+
+            mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+            if (mobilecheck()) {
+                toolbar = mobileToolbar;
+            }
+
+            editor = new Simditor({
+                textarea: $('#txt-content'),
+                placeholder: '这里输入文字...',
+                toolbar: toolbar,
+                pasteImage: true,
+                defaultImage: '/default.jpg',
+                upload: location.search === '?upload' ? {
+                    url: '/upload'
+                } : false
+            });
+            $preview = $('#preview');
+            if ($preview.length > 0) {
+                return editor.on('valuechanged', function(e) {
+                    return $preview.html(editor.getValue());
+                });
+            }
+            $("#btn").click(function(){
+                var editor_val = editor.getValue();
+                var title_val = $("#title").val();
+                var type_val = $("#type").val();
+                var data =  {
+                    'editor_val': editor_val,
+                        'title': title_val,
+                    'type': type_val
+                }
+                $.post(
+                    'upload', data
+                    ,function(){
+
+                }
+                );
+            });
+        });
+    }).call(this);
+
+</script>
+</body>
+</html>

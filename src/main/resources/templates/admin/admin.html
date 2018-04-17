@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>admin</title>
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navbar"><!--导航栏-->
+        <div class="container-fluid">
+            <div class="col-sm-2 text-center navbar-left">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="logo" href="#" style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-sm-10">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="pointer"><span class="glyphicon glyphicon-home"></span>&nbsp;Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" style="text-decoration: none">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <i class="badge">3</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="#myModal0">
+                                退出登陆
+                            </a>
+                            <!-- 模态框（Modal） -->
+                            <div class="modal fade" id="myModal0" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel0">
+                                                提示
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            确认登出吗?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                取消
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                登出
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/导航栏-->
+
+    <div class="row container-fluid">
+        <div class="col-sm-2"><!--左侧菜单-->
+            <div class="row">
+                <div class="user-img">
+                    <figure><img th:src="@{/images/portrait.jpg}" class="img-responsive img-circle img-thumbnail">
+                    </figure>
+                </div>
+                <div class="text-center pointer" style="padding-top: 10px">
+                    <a style="text-decoration: none">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人信息
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 30px">
+                <div class="navbar panel-group" id="box">
+                    <div class="panel text-center">
+                        <div class="panel-heading ">
+                            <a href="#" class="left-menu" style="text-decoration: none;">
+                                <span> 状态报告 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-hand-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseA" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none;">
+                                <span> 博文管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseA">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">文章列表</a></li>
+                                    <li><a href="#">文章添加</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseB" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none">
+                                <span> 相册管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseB">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">相册列表</a></li>
+                                    <li><a href="#">添加照片</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel text-center">
+                        <div class="panel-heading">
+                            <a href="#collapseC" data-parent="#box" data-toggle="collapse" class="left-menu"
+                               style="text-decoration: none">
+                                <span> 留言管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseC">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">留言列表</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--/左侧菜单-->
+
+        <div class="col-sm-10 bgcolor"><!--主体内容-->
+                <div>
+                    <h3 class="header">状态</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                            <tr>
+                                <td>登录者: <span>admin</span>，这是您第 <span>13</span> 次登录</td>
+                            </tr>
+                            <tr>
+                                <td>上次登录时间: 2016-01-08 15:50:28 , 上次登录IP: ::1:55570</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="header">系统信息</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr></tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>管理员个数:</td>
+                                <td>2 人</td>
+                                <td>服务器软件:</td>
+                                <td>Apache/2.4.10 (Win32) OpenSSL/1.0.1i mod_fcgid/2.3.9</td>
+                            </tr>
+                            <tr>
+                                <td>浏览器:</td>
+                                <td>Chrome47</td>
+                                <td>PHP版本:</td>
+                                <td>5.6.1</td>
+                            </tr>
+                            <tr>
+                                <td>操作系统:</td>
+                                <td>Windows 10</td>
+                                <td>PHP运行方式:</td>
+                                <td>CGI-FCGI</td>
+                            </tr>
+                            <tr>
+                                <td>登录者IP:</td>
+                                <td>::1:55570</td>
+                                <td>MYSQL版本:</td>
+                                <td>5.5.40</td>
+                            </tr>
+                            <tr>
+                                <td>程序版本:</td>
+                                <td class="version">YlsatCMS v 1.0 <font size="-6" color="#BBB">(20160108160215)</font>
+                                </td>
+                                <td>上传文件:</td>
+                                <td>可以 <font size="-6" color="#BBB">(最大文件：2M ，表单：8M )</font></td>
+                            </tr>
+                            <tr>
+                                <td>程序编码:</td>
+                                <td>UTF-8</td>
+                                <td>当前时间:</td>
+                                <td>2016-01-08 15:50:30</td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+        </div><!--主体内容-->
+    </div>
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom"><!--版权信息-->
+        <div class="container">
+            <p class="text-center">我是版权信息</p>
+        </div>
+    </nav><!--/版权信息-->
+
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
