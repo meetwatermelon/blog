@@ -35,9 +35,17 @@ public class HTMLTest {
     public String addarticle(){
         return "admin/article/addarticle";
     }
+    @RequestMapping(value = "articlelist")
+    public String articlelist(){
+        return "admin/article/articlelist";
+    }
     @RequestMapping(value = "article")
     public String article(){
-        return "admin/article/article";
+        return "client/article";
+    }
+    @RequestMapping(value = "comment")
+    public String comment(){
+        return "admin/comment/comment";
     }
 
 }
