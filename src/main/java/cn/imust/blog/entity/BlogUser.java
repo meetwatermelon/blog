@@ -3,6 +3,7 @@ package cn.imust.blog.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Set;
 
 @Entity
 public class BlogUser {

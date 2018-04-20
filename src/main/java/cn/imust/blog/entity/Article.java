@@ -1,19 +1,31 @@
 package cn.imust.blog.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Article {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Integer id;
     private String title;
     private String content;
     private Date date;
-    private Comment comment;
+
+    @OneToMany(targetEntity = Comment.class,mappedBy = "article")
+    @Cascade(value = {CascadeType.SAVE_UPDATE})
+    private Set<Comment> comments = new HashSet<Comment>(0);
+
+
+    @ManyToOne
     private Category category;
+
 
     public Integer getId() {
         return id;
@@ -47,19 +59,19 @@ public class Article {
         this.date = date;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
-
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

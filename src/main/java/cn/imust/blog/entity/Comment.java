@@ -3,6 +3,7 @@ package cn.imust.blog.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -12,8 +13,13 @@ public class Comment {
     private String content;
     private Date date;
     private Integer flag;
+
+    @ManyToOne
     private BlogUser quser;
+    @ManyToOne
     private BlogUser auser;
+    @ManyToOne
+    private Article article;
 
     public Integer getId() {
         return id;
@@ -61,5 +67,13 @@ public class Comment {
 
     public void setAuser(BlogUser auser) {
         this.auser = auser;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }
