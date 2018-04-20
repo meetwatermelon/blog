@@ -47,5 +47,9 @@ public class HTMLTest {
     public String comment(){
         return "admin/comment/comment";
     }
+    @RequestMapping(value = "links")
+    public String links(){
+        return "admin/links/links";
+    }
 
 }

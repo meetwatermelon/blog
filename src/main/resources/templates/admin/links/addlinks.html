@@ -6,15 +6,11 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>gallery</title>
+    <title>添加文章</title>
     <!-- Bootstrap -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
-    <link th:href="@{/css/compiled/gallery.css}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/compiled/elements.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/compiled/icons.css}">
-
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/simditor.css}" />
 </head>
 <body>
 <div class="container-fluid">
@@ -177,95 +173,25 @@
         </div><!--/左侧菜单-->
 
         <div class="col-sm-10 bgcolor"><!--主体内容-->
-            <div id="pad-wrapper" class="gallery">
-                <div class="row header">
-                    <div class="col-md-12">
-                        <h3>Gallery</h3>
+            <form class="form-horizontal" th:action="@{/links/savelink}" method="post">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="请输入链接名称">
                     </div>
                 </div>
-
-                <!-- gallery.html wrapper -->
-                <div class="gallery-wrapper">
-                    <div class="row gallery-row">
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img1.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img2.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 2
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img3.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 3
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img4.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gallery-row">
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img5.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 2
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img6.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 3
-                                </p>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="url" class="form-control" id="inputPassword3" placeholder="请输入链接地址">
                     </div>
                 </div>
-                <!-- end gallery.html wrapper -->
-
-            </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-default" type="submit" value="提交" >
+                    </div>
+                </div>
+            </form>
         </div><!--主体内容-->
     </div>
 
@@ -281,5 +207,7 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+
+
 </body>
 </html>
