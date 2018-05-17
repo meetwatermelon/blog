@@ -40,8 +40,15 @@ public class ArticleController {
         return "redirect:articlelist";
     }
 
-    @RequestMapping (value = "updatearticle")
-    public String updateArticle(){
+    @RequestMapping (value = "goupdate")
+    public String goUpdate(){
+        return "admin/article/updatearticle";
+    }
+
+    @RequestMapping (value = "update/{id}")
+    public String updateArticle(@PathVariable int id){
+        Article article = articleService.getOneArticle(id);
+        articleService.updateArticle(article);
         return "admin/article/updatearticle";
     }
 

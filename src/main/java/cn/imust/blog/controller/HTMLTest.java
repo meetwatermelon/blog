@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping(value = "/blog")
 public class HTMLTest {
-    @RequestMapping(value = "index")
-    public String index(){
-        return "index";
-    }
     @RequestMapping(value = "login")
     public String login(){
         return "login";
