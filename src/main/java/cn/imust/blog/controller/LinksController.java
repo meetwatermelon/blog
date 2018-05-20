@@ -38,7 +38,7 @@ public class LinksController {
     @RequestMapping(value = "deletelink/{id}")
     public String delete(@PathVariable int id){
         linksService.delete(id);
-        return "redirect:findAll";
+        return "redirect:/links/findlinks";
     }
 
 

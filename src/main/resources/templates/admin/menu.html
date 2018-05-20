@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="menu">
+<div class="col-sm-2"><!--左侧菜单-->
+    <div class="row">
+        <div class="user-img">
+            <figure><img th:src="@{/images/portrait.jpg}" class="img-responsive img-circle img-thumbnail">
+            </figure>
+        </div>
+        <div class="text-center pointer" style="padding-top: 10px">
+            <a style="text-decoration: none">
+                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人信息
+            </a>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 30px">
+        <div class="navbar panel-group" id="box">
+            <div class="panel text-center">
+                <div class="panel-heading ">
+                    <a href="#" class="left-menu" style="text-decoration: none;">
+                        <span> 状态报告 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-hand-right"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="panel text-center">
+                <div class="panel-heading">
+                    <a href="#collapseA" data-parent="#box" data-toggle="collapse" class="left-menu"
+                       style="text-decoration: none;">
+                        <span> 博文管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                    </a>
+                </div>
+                <div class="panel-collapse collapse" id="collapseA">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="../article/findarticle">文章列表</a></li>
+                            <li><a href="../article/addarticle">文章添加</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel text-center">
+                <div class="panel-heading">
+                    <a href="#collapseB" data-parent="#box" data-toggle="collapse" class="left-menu"
+                       style="text-decoration: none">
+                        <span> 相册管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                    </a>
+                </div>
+                <div class="panel-collapse collapse" id="collapseB">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">相册列表</a></li>
+                            <li><a href="#">添加照片</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel text-center">
+                <div class="panel-heading">
+                    <a href="#collapseC" data-parent="#box" data-toggle="collapse" class="left-menu"
+                       style="text-decoration: none">
+                        <span> 评论管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                    </a>
+                </div>
+                <div class="panel-collapse collapse" id="collapseC">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">评论列表</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel text-center">
+                <div class="panel-heading">
+                    <a href="#collapseD" data-parent="#box" data-toggle="collapse" class="left-menu"
+                       style="text-decoration: none">
+                        <span>链接管理 </span>&nbsp;&nbsp; <span class="glyphicon glyphicon-menu-down"></span>
+                    </a>
+                </div>
+                <div class="panel-collapse collapse" id="collapseD">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="/links/findlinks">链接列表</a></li>
+                            <li><a href="/links/addlink">添加链接</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div><!--/左侧菜单-->
+</div>
+</body>
+</html>

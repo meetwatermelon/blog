@@ -64,11 +64,10 @@
     <div class="container"><!--主要内容-->
         <div class="col-sm-9">
             <div class="panel"><!--显示文章-->
-                <div class="panel-heading">
-                    文章题目
+                <div class="panel-heading" th:utext="${article.title}">
+                    <p class="page-header"></p>
                 </div>
-                <div class="panel-body">
-                    文章内容
+                <div class="panel-body" th:utext="${article.content}">
                     <div>
                         <p class="page-header">评论</p>
                         <from>

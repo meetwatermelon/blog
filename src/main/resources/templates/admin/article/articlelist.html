@@ -179,55 +179,27 @@
                             <thead>
                             <tr>
                                 <th><span><span class="glyphicon glyphicon-file"></span> 标题</span></th>
-                                <th><span><span class="glyphicon glyphicon-tag"></span> 标签</span></th>
+                                <th><span><span class="glyphicon glyphicon-tag"></span> 分类</span></th>
                                 <th><span><span class="glyphicon glyphicon-comment"></span> 评论</span></th>
                                 <th><span><span class="glyphicon glyphicon-time"></span>日期</span></th>
                                 <th colspan="2"><span><span class="glyphicon glyphicon-pencil"></span> 操作</span></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="article-title">这是测试的文章标题</td>
-                                <td class="hidden-sm">PHP、JavaScript</td>
-                                <td class="hidden-sm"><a th:href="@{/blog/comment}">0</a></td>
-                                <td>2015-12-03</td>
+                            <tr th:each="articles:${articles}">
+                                <td th:text="${articles.title}"></td>
+                                <td th:text="${articles.category.name}"></td>
+                                <td>评论数量</td>
+                                <td th:text="${articles.date}"></td>
+
+                              <!--  <td th:text="${list.comments}"></td> -->
                                 <td>
-                                        <a href="#">修改</a>
+                                        <a href="goupdate">修改</a>
                                 </td>
                                 <td>
-                                    <!-- a触发模态框 -->
-                                    <a data-toggle="modal" data-target="#myModal">
+                                    <a href="javascript:;" th:onclick="'javascript:dele(\''+${articles.id}+'\');'">
                                         删除
                                     </a>
-                                    <!-- 模态框（Modal） -->
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">
-                                                        &times;
-                                                    </button>
-                                                    <h4 class="modal-title" id="myModalLabel">
-                                                        提示
-                                                    </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    确认删除这篇文章吗?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">
-                                                        取消
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        删除
-                                                    </button>
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal -->
-                                    </div>
                                 </td>
                             </tr>
                             </tbody>
@@ -262,5 +234,19 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- layer -->
+<script th:src="@{/layer/layer.js}"></script>
+
+<script>
+    function dele(id) {
+        layer.confirm('您确定要删除这条记录？', {
+            btn: ['确定', '反悔'] //按钮
+        }, function () {
+            window.location.href = "/article/deletearticle/" + id;
+        }, function () {
+            // layer.msg('反悔', {icon: 1});
+        });
+    }
+</script>
 </body>
 </html>

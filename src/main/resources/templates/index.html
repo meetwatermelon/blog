@@ -35,19 +35,13 @@
                         <li><a href="#">生活笔记</a></li>
                         <li><a href="#">个人相册</a></li>
                         <li><a href="#">关于自己</a></li>
-                        <li class="dropdown">
+                        <li class="dropdown" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">技术杂谈 <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">前端开发</a></li>
-                                <li><a href="#">后端开发</a></li>
-                                <li><a href="#">移动开发</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">数据库</a></li>
-                                <li><a href="#">云计算&大数据</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">运维&测试</a></li>
-                                <li><a href="#">UI设计</a></li>
+                               aria-haspopup="true" aria-expanded="false" >技术杂谈 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" >
+                                <span th:each="categories:${categories}">
+                                <li> <a th:href="@{'/article/showCategory/'+${categories.id}}"><span th:utext="${categories.name}"></span></a> </li>
+                                </span>
                             </ul>
                         </li>
                     </ul>
@@ -107,20 +101,16 @@
             </div><!--/图片轮播-->
             <div class="mainContent"><!--文章显示-->
                 <h2 class="title_tj">
-                    <p>文章<span>推荐</span></p>
+                    <p>最新<span>文章</span></p>
                 </h2>
-                <div class="bloglist">
-                    <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
+                <div class="bloglist" th:each="article:${articles}">
+                    <h3 th:utext="${article.title}"></h3>
                     <figure><img class="img-responsive" th:src="@{/images/06.jpg}"></figure>
-                    <ul>
-                        <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                    </ul>
                     <div class="dateview">
-                        <a href="#" class="readmore">阅读全文>></a>
-                        <span>2013-11-04</span>
-                        <span>作者：李媛</span>
-                        <span>个人博客：[
-                            <a href="#" >程序人生</a>]
+                        <a th:href="@{'/blog/showarticle/'+${article.id}}" class="readmore">阅读全文>></a>
+                        <span th:utext="${article.date}"></span>
+                        <span>
+                            个人博客：[<a href="#" >程序人生</a>]
                         </span>
                     </div>
                 </div>
@@ -129,7 +119,7 @@
 
         <div class="col-lg-3 news"><!--右侧导航栏-->
             <h3>
-                <p>最新<span>文章</span></p>
+                <p>推荐<span>文章</span></p>
             </h3>
             <ul class="rank">
                 <li><a href="#">李媛的个人博客啦啦</a></li>

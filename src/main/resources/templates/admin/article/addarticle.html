@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/simditor.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/simditor.css}"/>
 </head>
 <body>
 <div class="container-fluid">
@@ -176,15 +176,17 @@
             <!--富文本编辑器-->
             <div>
                 <textarea id="txt-content" placeholder="Balabala" autofocus></textarea>
-                <form>
+                <form th:action="@{/article/savearticle}" id="artForm" method="post">
 
                     <input id="title" placeholder="请输入标题" name="title">
-                    <select id="type" name="type">
-
-                        <option value="0">生活</option>
-                        <option value="1">事业</option>
+                    <input type="hidden" name="content" id="contentInput">
+                    <!--这里有问题-->
+                    <select id="type" name="category.id">
+                        <span th:each="categories:${categories}">
+                            <option th:value="${categories.id}" th:text="${categories.name}"></option>
+                        </span>
                     </select>
-                    <input id="btn" type="button" value="提交" >
+                    <input id="btn" type="button" value="提交">
                 </form>
             </div>
         </div><!--主体内容-->
@@ -209,8 +211,8 @@
 <script type="text/javascript" th:src="@{/js/simditor/simditor.js}"></script>
 <script type="text/javascript" th:src="@{/js/simditor/mobilecheck.js}"></script>
 <script type="text/javascript">
-    (function() {
-        $(function() {
+    (function () {
+        $(function () {
             var $preview, editor, mobileToolbar, toolbar;
             Simditor.locale = 'en-US';
             toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
@@ -232,25 +234,14 @@
             });
             $preview = $('#preview');
             if ($preview.length > 0) {
-                return editor.on('valuechanged', function(e) {
+                return editor.on('valuechanged', function (e) {
                     return $preview.html(editor.getValue());
                 });
             }
-            $("#btn").click(function(){
+            $("#btn").click(function () {
                 var editor_val = editor.getValue();
-                var title_val = $("#title").val();
-                var type_val = $("#type").val();
-                var data =  {
-                    'editor_val': editor_val,
-                        'title': title_val,
-                    'type': type_val
-                }
-                $.post(
-                    'upload', data
-                    ,function(){
-
-                }
-                );
+                $('#contentInput').val(editor_val);
+                $('#artForm').submit();
             });
         });
     }).call(this);

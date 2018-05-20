@@ -185,6 +185,10 @@
                             <h3>添加照片</h3>
                         </div>
                     </div>
+                    <form method="POST" enctype="multipart/form-data" action="/album/upload">
+                        文件：<input type="file" name="album" />
+                        <input type="submit" value="上传" />
+                    </form>
                     <div class="center new-img">
                         <img th:src="@{/images/new-gallery-img.png}">
                         <h6>You don't have any images</h6>

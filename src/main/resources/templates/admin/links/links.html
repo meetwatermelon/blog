@@ -189,38 +189,9 @@
                                 <td class="article-title" th:text="${link.url}"></td>
                                 <td>
                                     <!-- a触发模态框 -->
-                                    <a data-toggle="modal" data-target="#myModal">
+                                    <a href="javascript:;" th:onclick="'javascript:dele(\''+${link.id}+'\');'">
                                         删除
                                     </a>
-                                    <!-- 模态框（Modal） -->
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">
-                                                        &times;
-                                                    </button>
-                                                    <h4 class="modal-title" id="myModalLabel">
-                                                        提示
-                                                    </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    确认删除这条链接吗?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">
-                                                        取消
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary">
-                                                        删除
-                                                    </button>
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal -->
-                                    </div>
                                 </td>
                             </tr>
                             </tbody>
@@ -243,6 +214,20 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- layer -->
+<script th:src="@{/layer/layer.js}"></script>
+
+<script>
+    function dele(id) {
+        layer.confirm('您确定要删除这条记录？', {
+            btn: ['确定', '反悔'] //按钮
+        }, function () {
+            window.location.href = "/links/deletelink/" + id;
+        }, function () {
+            // layer.msg('反悔', {icon: 1});
+        });
+    }
+</script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -14,6 +15,7 @@ public class ArticleService {
     @Autowired private ArticleRepository articleRepository;
 
     public void saveArticle(Article article){
+        article.setDate(new Date());
         articleRepository.save(article);
     }
 
@@ -33,6 +35,9 @@ public class ArticleService {
         articleRepository.saveAndFlush(article);
     }
 
+    public List<Article> getByCategoryID(int cid){
+        return articleRepository.findByCategoryId(cid);
+    }
 
 
 }

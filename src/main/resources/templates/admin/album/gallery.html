@@ -186,78 +186,15 @@
 
                 <!-- gallery.html wrapper -->
                 <div class="gallery-wrapper">
-                    <div class="row gallery-row">
+                    <div class="row gallery-row" th:each="album:${albums}">
                         <!-- single image -->
                         <div class="col-md-3 img-container">
                             <div class="img-box">
                                 <span class="icon trash">
                                 <i class="gallery-trash"></i>
                             </span>
-                                <img th:src="@{/images/img1.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img2.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 2
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img3.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 3
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img4.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gallery-row">
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img5.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 2
-                                </p>
-                            </div>
-                        </div>
-                        <!-- single image -->
-                        <div class="col-md-3 img-container">
-                            <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="@{/images/img6.jpg}" class="img-responsive" />
-                                <p class="title">
-                                    Beach pic title 3
+                                <img src="${album.name}" class="img-responsive"/>
+                                <p class="title" th:text="${album.fileName}">
                                 </p>
                             </div>
                         </div>

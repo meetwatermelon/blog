@@ -22,7 +22,6 @@ public class Article {
     @Cascade(value = {CascadeType.SAVE_UPDATE})
     private Set<Comment> comments = new HashSet<Comment>(0);
 
-
     @ManyToOne
     private Category category;
 
