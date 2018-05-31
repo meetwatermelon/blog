@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="copy">
+    <div class="navbar"><!--导航栏-->
+        <div class="container-fluid">
+            <div class="col-sm-2 text-center navbar-left">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="logo" href="#" style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-sm-10">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="pointer"><span class="glyphicon glyphicon-home"></span>&nbsp;Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" style="text-decoration: none">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <i class="badge">3</i>
+                            </a>
+                        </li>
+                        <li>
+                            <span th:if="${session.user!=null }">
+                        <li><a href="#" th:text="${session.user.uname}"></a>
+                            <a th:href="@{/user/logout}">退出</a></li>
+                        </span>
+                        <span th:if="${session.user==null }">
+                                <li><a th:href="@{/blog/loginForm}">登陆</a>
+                                <a th:href="@{/blog/register}">注册</a></li>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/导航栏-->
+</div>
+</body>
+</html>

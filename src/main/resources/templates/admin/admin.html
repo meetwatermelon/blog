@@ -14,72 +14,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="navbar"><!--导航栏-->
-        <div class="container-fluid">
-            <div class="col-sm-2 text-center navbar-left">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="logo" href="#" style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="col-sm-10">
-                <div class="navbar-left">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a class="pointer"><span class="glyphicon glyphicon-home"></span>&nbsp;Home
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#" style="text-decoration: none">
-                                <span class="glyphicon glyphicon-envelope"></span>
-                                <i class="badge">3</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="modal" data-target="#myModal0">
-                                退出登陆
-                            </a>
-                            <!-- 模态框（Modal） -->
-                            <div class="modal fade" id="myModal0" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <h4 class="modal-title" id="myModalLabel0">
-                                                提示
-                                            </h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            确认登出吗?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">
-                                                取消
-                                            </button>
-                                            <button type="submit" class="btn btn-primary">
-                                                登出
-                                            </button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal -->
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div><!--/导航栏-->
+    <div th:include="admin/nav :: copy"></div><!--导航栏-->
 
     <div class="row container-fluid">
         <div class="col-sm-2">
