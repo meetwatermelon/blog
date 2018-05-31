@@ -13,47 +13,7 @@
 </head>
 <body style="padding-top: 70px">
 <div class="container-fluid"><!-- container -->
-    <div><!--导航栏-->
-        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">响应式切换导航栏</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">LiYuan<span class=" glyphicon glyphicon-heart"></span></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-btn" id="bs-example-navbar-collapse-1">
-                    <ul class="nav nav-pills navbar-left">
-                        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">生活笔记</a></li>
-                        <li><a href="#">个人相册</a></li>
-                        <li><a href="#">关于自己</a></li>
-                        <li class="dropdown" >
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false" >技术杂谈 <span class="caret"></span></a>
-                            <ul class="dropdown-menu" >
-                                <span th:each="categories:${categories}">
-                                <li> <a th:href="@{'/article/showCategory/'+${categories.id}}"><span th:utext="${categories.name}"></span></a> </li>
-                                </span>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav nav-pills navbar-right">
-                        <li><a href="#">登陆</a></li>
-                        <li><a href="#">注册</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div><!--/导航栏-->
+    <div th:include="client/head :: copy"></div><!--导航栏-->
 
     <div class="container"><!--主要内容-->
 
@@ -117,36 +77,9 @@
             </div><!--/文章显示-->
         </div><!--/栅格9-->
 
-        <div class="col-lg-3 news"><!--右侧导航栏-->
-            <h3>
-                <p>推荐<span>文章</span></p>
-            </h3>
-            <ul class="rank">
-                <li><a href="#">李媛的个人博客啦啦</a></li>
-                <li><a href="#">李媛的个人博客啦啦</a></li>
-                <li><a href="#">李媛的个人博客啦啦</a></li>
-                <li><a href="#">李媛的个人博客啦啦</a></li>
-                <li><a href="#">李媛的个人博客啦啦</a></li>
-            </ul>
-            <h3 class="ph">
-                <p>个人<span>相册</span></p>
-            </h3>
-            <ul>
-                <figure><img th:src="@{/images/cam.jpg}" class="img-responsive img-thumbnail"></figure>
-            </ul>
-            <h3>
-                <p>友情<span>链接</span></p>
-            </h3>
-            <ul class="rank" th:each="link:${links}">
-                <li><a th:href="${link.url}"><span th:text="${link.name}"></span></a></li>
-            </ul>
-            <h3>
-                <p>请<span>关注我</span></p>
-            </h3>
-            <ul>
-                <figure><img th:src="@{/images/weixin.jpg}" class="img-responsive img-thumbnail"></figure>
-            </ul>
-        </div><!--/右侧导航栏-->
+        <div class="col-lg-3">
+            <div th:include="client/right :: copy"></div><!--右侧导航栏-->
+        </div>
 
     </div><!--/主要内容-->
 

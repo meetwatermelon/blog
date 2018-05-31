@@ -21,3 +21,5 @@ spring:
       enabled: true
       max-request-size: 10Mb
       max-file-size: 10Mb
+server:
+  port: 8089

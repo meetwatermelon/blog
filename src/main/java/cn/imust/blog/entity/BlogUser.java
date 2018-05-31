@@ -11,7 +11,7 @@ public class BlogUser {
     private Integer id;
     private String uname;
     private String pwd;
-    private int isadmin;
+    private boolean admin;
     private String email;
 
     public Integer getId() {
@@ -38,14 +38,6 @@ public class BlogUser {
         this.pwd = pwd;
     }
 
-    public int getIsadmin() {
-        return isadmin;
-    }
-
-    public void setIsadmin(int isadmin) {
-        this.isadmin = isadmin;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -53,4 +45,13 @@ public class BlogUser {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }
+

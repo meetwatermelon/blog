@@ -30,7 +30,7 @@ public class IndexController {
 
         List<Category> categories = categoryService.findAll();
         model.addAttribute("categories",categories);
-        return "index";
+        return "client/index";
     }
 
     @RequestMapping (value = "showarticle/{id}")

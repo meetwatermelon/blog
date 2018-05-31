@@ -16,4 +16,8 @@ public class BlogUserService {
     public void save(BlogUser blogUser){
         blogUserRepository.save(blogUser);
     }
+
+    public BlogUser login(BlogUser user) {
+        return blogUserRepository.findBlogUsersByEmailAndPwd(user.getEmail() , user.getPwd());
+    }
 }

@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BlogUserRepository extends JpaRepository<BlogUser,Integer> {
+
+    BlogUser findBlogUsersByEmailAndPwd(String email , String pwd);
+
 }
