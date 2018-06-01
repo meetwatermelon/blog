@@ -36,7 +36,7 @@ public class ArticleController {
     public String findArticle(Model model){
         List<Article> articles = articleService.findArticle();
         model.addAttribute("articles",articles);
-        return "admin/article/articlelist";
+        return "/admin/article/articlelist";
     }
 
     @RequestMapping (value = "deletearticle/{id}")

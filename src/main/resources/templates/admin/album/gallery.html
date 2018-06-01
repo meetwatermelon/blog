@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div th:include="admin/album/nav :: copy"></div><!--导航栏-->
+    <div th:include="/admin/nav :: copy"></div><!--导航栏-->
     <div class="row container-fluid">
         <div class="col-sm-2">
             <div th:include="admin/menu :: copy"></div><!--左侧菜单-->
@@ -41,7 +41,7 @@
                                 <span class="icon trash">
                                 <i class="gallery-trash"></i>
                             </span>
-                                <img src="${album.name}" class="img-responsive"/>
+                                <img th:src="${album.file}" class="img-responsive"/>
                                 <p class="title" th:text="${album.fileName}">
                                 </p>
                             </div>
