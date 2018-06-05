@@ -32,35 +32,17 @@ public class AlbumController {
         album.setFileName(fileName);
         // 获取文件的后缀名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        // 文件上传路径
-        String filePath = "d:/blog/img/";
         // 解决中文问题，liunx 下中文路径，图片显示问题
         fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
 
-
-        album.setName(filePath + fileName);
-
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
-            albumService.save(album);
-            return "redirect: album/gallery";
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "上传失败";
+        albumService.save(album);
+        return "redirect:/album/gallery";
     }
 
     @RequestMapping (value = "gallery")
     public String findAll(Model model){
         List<Album> albums = albumService.findAll();
         model.addAttribute("albums",albums);
-        return "admin/album/gallery";
+        return "/admin/album/gallery";
     }
 }
