@@ -34,14 +34,16 @@
 
                 <!-- gallery.html wrapper -->
                 <div class="gallery-wrapper">
-                    <div class="row gallery-row" th:each="album:${albums}">
+                    <div class="row gallery-row">
                         <!-- single image -->
-                        <div class="col-md-3 img-container">
+                        <div class="col-md-3 img-container" th:each="album:${albums}">
                             <div class="img-box">
-                                <span class="icon trash">
-                                <i class="gallery-trash"></i>
-                            </span>
-                                <img th:src="${album.file}" class="img-responsive"/>
+                                <a href="javascript:;" th:onclick="'javascript:dele(\''+${album.id}+'\');'">
+                                    <span class="icon trash">
+                                        <i class="gallery-trash"></i>
+                                    </span>
+                                </a>
+                                <img th:src="${album.name}" class="img-responsive"/>
                                 <p class="title" th:text="${album.fileName}">
                                 </p>
                             </div>
@@ -66,5 +68,16 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+    function dele(id) {
+        layer.confirm('您确定要删除这条记录？', {
+            btn: ['确定', '反悔'] //按钮
+        }, function () {
+            window.location.href = "/album/deletelink/" + id;
+        }, function () {
+            // layer.msg('反悔', {icon: 1});
+        });
+    }
+</script>
 </body>
 </html>
