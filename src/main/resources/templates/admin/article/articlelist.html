@@ -41,7 +41,7 @@
 
                               <!--  <td th:text="${list.comments}"></td> -->
                                 <td>
-                                        <a href="goupdate">修改</a>
+                                    <a href="javascript:;" th:onclick="'javascript:update(\''+${articles.id}+'\');'">修改</a>
                                 </td>
                                 <td>
                                     <a href="javascript:;" th:onclick="'javascript:dele(\''+${articles.id}+'\');'">
@@ -93,6 +93,10 @@
         }, function () {
             // layer.msg('反悔', {icon: 1});
         });
+    }
+
+    function update(id){
+        window.location.href = "/article/goupdate/"+id;
     }
 </script>
 </body>

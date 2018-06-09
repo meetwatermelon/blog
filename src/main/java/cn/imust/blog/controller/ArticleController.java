@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -45,16 +46,19 @@ public class ArticleController {
         return "redirect:/article/findarticle";
     }
 
-    @RequestMapping (value = "goupdate")
-    public String goUpdate(){
-        return "admin/article/updatearticle";
+    @RequestMapping (value = "goupdate/{id}")
+    public ModelAndView goUpdate(@PathVariable int id){
+        Article article = articleService.getOneArticle(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("article",article);
+        modelAndView.setViewName("/admin/article/updatearticle");
+        return modelAndView;
     }
 
-    @RequestMapping (value = "update/{id}")
-    public String updateArticle(@PathVariable int id){
-        Article article = articleService.getOneArticle(id);
+    @RequestMapping (value = "update")
+    public String updateArticle(Article article){
         articleService.updateArticle(article);
-        return "admin/article/updatearticle";
+        return "redirect:/article/findarticle";
     }
 
     @RequestMapping (value = "showCategory/{id}")

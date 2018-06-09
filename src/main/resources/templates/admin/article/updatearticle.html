@@ -55,7 +55,7 @@
 <script type="text/javascript" th:src="@{/js/simditor/uploader.js}"></script>
 <script type="text/javascript" th:src="@{/js/simditor/simditor.js}"></script>
 <script type="text/javascript" th:src="@{/js/simditor/mobilecheck.js}"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
     (function() {
         $(function() {
             var $preview, editor, mobileToolbar, toolbar;
@@ -67,9 +67,11 @@
                 toolbar = mobileToolbar;
             }
 
+            var text = [[${article.content}]];
+            console.log(text);
             editor = new Simditor({
                 textarea: $('#txt-content'),
-                placeholder: '这里输入文字...',
+                placeholder: text,
                 toolbar: toolbar,
                 pasteImage: true,
                 defaultImage: '/default.jpg',
@@ -77,6 +79,11 @@
                     url: '/upload'
                 } : false
             });
+
+            editor.setValue(text);
+            var title = [[${article.title}]];
+            $("#title").val(title);
+
             $preview = $('#preview');
             if ($preview.length > 0) {
                 return editor.on('valuechanged', function(e) {
