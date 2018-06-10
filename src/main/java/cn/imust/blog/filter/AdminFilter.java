@@ -29,8 +29,8 @@ public class AdminFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         StringBuffer url = request.getRequestURL();
         String s = url.substring(url.lastIndexOf("/"));
-        logger.info("后台管理员拦截");
         if ("/admin".equals(s)) {
+            logger.info("后台管理员拦截");
             BlogUser user = (BlogUser) request.getSession().getAttribute("user");
             if (user != null && user.isAdmin()) {
                 //放行
