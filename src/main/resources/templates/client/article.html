@@ -45,13 +45,13 @@
 
                 <div class="media-body">
                     <div class="well well-lg">
-                        <h4 class="media-heading" th:if="${ comment.auser !=null }">回复：<span th:text="${ comment.quser.uname }"></span></h4>
-                        <h4 class="media-heading" th:if="${ comment.auser ==null }">评论</h4>
+                        <h4 class="media-heading" th:if="${ comment.auser !=null }"><span th:text="${ comment.date }"></span>&nbsp;回复：<span th:text="${ comment.quser.uname }"></span></h4>
+                        <h4 class="media-heading" th:if="${ comment.auser ==null }"><span th:text="${ comment.date }"></span>&nbsp;评论</h4>
                         <span th:text="${ comment.content }"></span>
                     </div>
                     <button type="button" id="backButton" class="btn btn-default"
                             data-toggle="modal" data-target="#myModal"
-                            th:onclick="'javascript:backButton(\''+${article.id}+'\',\''+${comment.quser.id}+'\',\''+${comment.quser.uname}+'\');'">
+                            th:onclick="'javascript:backButton(\''+${article.id}+'\',\''+${comment.quser.id}+'\',\''+${comment.quser.uname}+'\',\''+${comment.id}+'\');'">
                         回复
                     </button>
                 </div>
@@ -69,6 +69,7 @@
                     <div class="modal-body">
                         <form id="commentBackForm" action="/article/backComment" method="post">
                             <input type="hidden" id="atrid" name="article.id" class="form-control">
+                            <input type="hidden" id="commentid" name="id" class="form-control">
                             <input type="hidden" id="querid" name="quser.id" class="form-control">
                             <textarea name="content" class="form-control" rows="5" style="max-width: 790px;"></textarea>
                         </form>
@@ -97,10 +98,11 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script>
-    function backButton(articleId, qid,quname) {
+    function backButton(articleId, qid,quname,commentid) {
         $("#atrid").val(articleId);
         $("#querid").val(qid);
         $("#myModalLabel").text("评论回复：" + quname);
+        $("#commentid").val(commentid);
     }
 
     function save(){
