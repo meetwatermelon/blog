@@ -17,7 +17,7 @@
                 <div class="navbar-left">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a class="pointer"><span class="glyphicon glyphicon-home"></span>&nbsp;Home
+                            <a class="pointer" th:href="@{/blog/index}"><span class="glyphicon glyphicon-home"></span>&nbsp;主页
                             </a>
                         </li>
                     </ul>
@@ -31,13 +31,13 @@
                             </a>
                         </li>
                         <li>
-                            <span th:if="${session.user!=null }">
-                        <li><a href="#" th:text="${session.user.uname}"></a>
-                            <a th:href="@{/user/logout}">退出</a></li>
-                        </span>
-                        <span th:if="${session.user==null }">
-                                <li><a th:href="@{/blog/loginForm}">登陆</a>
-                                <a th:href="@{/blog/register}">注册</a></li>
+                            <span th:if="${ session.user != null }">
+                                <a href="#" th:text="${session.user.uname}"></a>
+                                    <a th:href="@{/user/logout}">退出</a>
+                            </span>
+                            <span th:if="${ session.user == null }">
+                                <a th:href="@{/blog/loginForm}">登陆</a>
+                                <a th:href="@{/blog/register}">注册</a>
                             </span>
                         </li>
                     </ul>
