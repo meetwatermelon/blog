@@ -12,7 +12,7 @@ public class Comment {
     private Integer id;
     private String content;
     private Date date;
-    private Integer flag;
+    private boolean flag;
 
     @ManyToOne
     private BlogUser quser;
@@ -45,11 +45,11 @@ public class Comment {
         this.date = date;
     }
 
-    public Integer getFlag() {
+    public boolean isFlag() {
         return flag;
     }
 
-    public void setFlag(Integer flag) {
+    public void setFlag(boolean flag) {
         this.flag = flag;
     }
 
