@@ -46,4 +46,13 @@ public class ArticleService {
     public void addComment(Comment comment) {
         commentRepository.save(comment);
     }
+
+    public void backComment(Comment comment) {
+        Comment one = commentRepository.findOne(comment.getId());
+        // 设置为已回复
+        one.setFlag(true);
+        // 保存新的回复信息
+        comment.setId(null);
+        commentRepository.save(comment);
+    }
 }

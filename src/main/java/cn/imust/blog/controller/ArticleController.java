@@ -87,7 +87,7 @@ public class ArticleController {
         comment.setDate(new Date());
         BlogUser user = (BlogUser)request.getSession().getAttribute("user");
         comment.setAuser(user);
-        articleService.addComment(comment);
+        articleService.backComment(comment);
         return "redirect:/article/findarticle";
     }
 }

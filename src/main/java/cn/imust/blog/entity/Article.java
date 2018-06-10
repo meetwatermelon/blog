@@ -5,9 +5,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Article {
@@ -20,7 +18,7 @@ public class Article {
 
     @OneToMany(targetEntity = Comment.class,mappedBy = "article")
     @Cascade(value = {CascadeType.SAVE_UPDATE})
-    private Set<Comment> comments = new HashSet<Comment>(0);
+    private List<Comment> comments = new ArrayList<>(0);
 
     @ManyToOne
     private Category category;
@@ -66,11 +64,11 @@ public class Article {
         this.category = category;
     }
 
-    public Set<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 }
