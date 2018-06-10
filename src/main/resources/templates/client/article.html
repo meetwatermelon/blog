@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,15 +22,62 @@
                     <p class="page-header"></p>
                 </div>
                 <div class="panel-body" th:utext="${article.content}">
-                    <div>
-                        <p class="page-header">评论</p>
-                        <from>
-                            <textarea id="content" class="form-control"  rows="5" style="max-width: 790px;"></textarea>
-                            <input class="btn btn-default" type="button" value="提交">
-                        </from>
-                    </div>
                 </div>
 
+            </div>
+            <div>
+                <p class="page-header">评论</p>
+                <form action="/article/addComment" method="post">
+                    <input type="hidden" name="article.id" th:value="${article.id}">
+                    <textarea id="content" name="content" class="form-control" rows="5"
+                              style="max-width: 790px;"></textarea>
+                    <br/>
+                    <input class="btn btn-default" type="submit" value="提交">
+                </form>
+            </div>
+
+            <div class="media" th:each="comment: ${ article.comments }">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" th:src="@{/images/logo-jhipster.png}" alt="...">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <div class="well well-lg">
+                        <h4 class="media-heading" th:if="${ comment.auser !=null }">回复：<span th:text="${ comment.quser.uname }"></span></h4>
+                        <h4 class="media-heading" th:if="${ comment.auser ==null }">评论</h4>
+                        <span th:text="${ comment.content }"></span>
+                    </div>
+                    <button type="button" id="backButton" class="btn btn-default"
+                            data-toggle="modal" data-target="#myModal"
+                            th:onclick="'javascript:backButton(\''+${article.id}+'\',\''+${comment.quser.id}+'\',\''+${comment.quser.uname}+'\');'">
+                        回复
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="commentBackForm" action="/article/backComment" method="post">
+                            <input type="hidden" id="atrid" name="article.id" class="form-control">
+                            <input type="hidden" id="querid" name="quser.id" class="form-control">
+                            <textarea name="content" class="form-control" rows="5" style="max-width: 790px;"></textarea>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" onclick="save()">保存回复</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -48,5 +96,16 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+    function backButton(articleId, qid,quname) {
+        $("#atrid").val(articleId);
+        $("#querid").val(qid);
+        $("#myModalLabel").text("评论回复：" + quname);
+    }
+
+    function save(){
+        $("#commentBackForm").submit();
+    }
+</script>
 </body>
 </html>

@@ -1,16 +1,21 @@
 package cn.imust.blog.controller;
 
 import cn.imust.blog.entity.Article;
+import cn.imust.blog.entity.BlogUser;
 import cn.imust.blog.entity.Category;
+import cn.imust.blog.entity.Comment;
 import cn.imust.blog.service.ArticleService;
 import cn.imust.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -68,4 +73,21 @@ public class ArticleController {
         return "client/categories";
     }
 
+    @PostMapping("addComment")
+    public String addComment(Comment comment, HttpServletRequest request){
+        comment.setDate(new Date());
+        BlogUser user = (BlogUser)request.getSession().getAttribute("user");
+        comment.setQuser(user);
+        articleService.addComment(comment);
+        return "redirect:/article/findarticle";
+    }
+
+    @PostMapping("backComment")
+    public String backComment(Comment comment,HttpServletRequest request){
+        comment.setDate(new Date());
+        BlogUser user = (BlogUser)request.getSession().getAttribute("user");
+        comment.setAuser(user);
+        articleService.addComment(comment);
+        return "redirect:/article/findarticle";
+    }
 }

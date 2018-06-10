@@ -1,7 +1,9 @@
 package cn.imust.blog.service;
 
 import cn.imust.blog.entity.Article;
+import cn.imust.blog.entity.Comment;
 import cn.imust.blog.repository.ArticleRepository;
+import cn.imust.blog.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @Transactional
 public class ArticleService {
     @Autowired private ArticleRepository articleRepository;
+    @Autowired private CommentRepository commentRepository;
 
     public void saveArticle(Article article){
         article.setDate(new Date());
@@ -40,4 +43,7 @@ public class ArticleService {
     }
 
 
+    public void addComment(Comment comment) {
+        commentRepository.save(comment);
+    }
 }
