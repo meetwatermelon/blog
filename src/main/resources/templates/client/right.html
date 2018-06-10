@@ -23,7 +23,7 @@
             <p>友情<span>链接</span></p>
         </h3>
         <ul class="rank" th:each="link:${links}">
-            <li><a th:href="${link.url}"><span th:text="${link.name}"></span></a></li>
+            <li><a th:href="${link.url}" target="_blank"><span th:text="${link.name}"></span></a></li>
         </ul>
         <h3>
             <p>请<span>关注我</span></p>
