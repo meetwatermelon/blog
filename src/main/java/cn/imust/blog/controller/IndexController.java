@@ -37,6 +37,8 @@ public class IndexController {
     public String showArticle(@PathVariable int id,Model model){
         Article article = articleService.getOneArticle(id);
         model.addAttribute("article",article);
+        List<Links> links = linksService.findAll();
+        model.addAttribute("links",links);
         return "client/article";
     }
 
