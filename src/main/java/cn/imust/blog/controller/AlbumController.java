@@ -34,11 +34,11 @@ public class AlbumController {
         // 获取文件的后缀名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         // 文件上传路径
-        String filePath = "F:\\GitHub\\blog\\src\\main\\resources\\static\\album\\";
+        String filePath = "F:\\blog\\album\\";
         // 解决中文问题，liunx 下中文路径，图片显示问题
         fileName = UUID.randomUUID() + suffixName;
         File dest = new File(filePath + fileName);
-        album.setName("/album/" + fileName);
+        album.setName("http://localhost:8080/" + fileName);
         // 检测是否存在目录1
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
