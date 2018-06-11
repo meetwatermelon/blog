@@ -37,16 +37,16 @@
                     <div class="row gallery-row">
                         <!-- single image -->
                         <div class="col-md-3 img-container" th:each="album:${albums}">
-                            <div class="img-box">
-                                <a href="javascript:;" th:onclick="'javascript:dele(\''+${album.id}+'\');'">
+                            <a href="javascript:;" th:onclick="'javascript:dele(\''+${album.id}+'\');'">
+                                <div class="img-box">
                                     <span class="icon trash">
                                         <i class="gallery-trash"></i>
                                     </span>
-                                </a>
-                                <img th:src="${album.name}" class="img-responsive"/>
-                                <p class="title" th:text="${album.fileName}">
-                                </p>
-                            </div>
+                                    <img th:src="${album.name}" class="img-responsive"/>
+                                    <p class="title" th:text="${album.fileName}">
+                                    </p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -68,12 +68,13 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/layer/layer.js}"></script>
 <script>
     function dele(id) {
         layer.confirm('您确定要删除这条记录？', {
             btn: ['确定', '反悔'] //按钮
         }, function () {
-            window.location.href = "/album/deletelink/" + id;
+            window.location.href = "/album/delete/" + id;
         }, function () {
             // layer.msg('反悔', {icon: 1});
         });
