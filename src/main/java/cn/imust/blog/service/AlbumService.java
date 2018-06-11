@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.File;
 import java.util.List;
 
 @Service
@@ -18,6 +19,11 @@ public class AlbumService {
     }
 
     public void delete(int id){
+        Album album = albumRepository.findOne(id);
+        String name = album.getName();
+        name = name.substring(name.lastIndexOf("/") + 1);
+        File file = new File("F:\\blog\\album\\" + name);
+        file.delete();
         albumRepository.delete(id);
     }
 
