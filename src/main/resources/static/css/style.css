@@ -20,6 +20,7 @@
 .rank li { height: 25px; line-height: 25px; clear: both; padding-left: 5px; overflow: hidden; padding-left: 15px; background: url(../images/li.jpg) no-repeat left center; }
 .rank { margin: 10px 0; overflow: hidden; }
 .rank li a { color: #333; }
+
 /*正文字体样式*/
 h2.title_tj { font: 18px "微软雅黑", Arial, Helvetica, sans-serif; color: #444; font-weight: bold; background: url(../images/h_line.jpg) repeat-x 20px center; }
 h2.title_tj span { color: #ff8986 }

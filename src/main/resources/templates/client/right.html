@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <body>
-    <div th:fragment="copy" class="news"><!--右侧导航栏-->
+    <div th:fragment="copy"><!--右侧导航栏-->
+        <div class="news">
         <h3>
             <p>推荐<span>文章</span></p>
         </h3>
-        <ul class="rank">
-            <li><a href="#">李媛的个人博客啦啦</a></li>
-            <li><a href="#">李媛的个人博客啦啦</a></li>
-            <li><a href="#">李媛的个人博客啦啦</a></li>
-            <li><a href="#">李媛的个人博客啦啦</a></li>
-            <li><a href="#">李媛的个人博客啦啦</a></li>
+        <ul class="rank" th:each="article:${articles}" >
+            <li><a th:href="@{'/blog/showarticle/'+${article.id}}"><span th:utext="${article.title}"></span></a></li>
+
         </ul>
         <h3 class="ph">
             <p>个人<span>相册</span></p>
         </h3>
         <ul>
-            <figure><img th:src="@{/images/cam.jpg}" class="img-responsive img-thumbnail"></figure>
+            <a href="/blog/gallerys"><img th:src="@{/images/cam.jpg}" class="img-responsive img-thumbnail"></a>
         </ul>
         <h3>
             <p>友情<span>链接</span></p>
@@ -31,6 +30,7 @@
         <ul>
             <figure><img th:src="@{/images/weixin.jpg}" class="img-responsive img-thumbnail"></figure>
         </ul>
+        </div>
     </div><!--/右侧导航栏-->
 </body>
 </html>

@@ -1,7 +1,11 @@
 package cn.imust.blog.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 
@@ -16,7 +20,10 @@ public class HTMLTest {
         return "register";
     }
     @RequestMapping(value = "admin")
-    public String admin(){
+    public String admin(Model model){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
+        String date = sdf.format(new Date());
+        model.addAttribute("date",date);
         return "admin/admin";
     }
     @RequestMapping(value = "galleryadd")

@@ -37,4 +37,11 @@ public class BlogUserController {
         session.invalidate();
         return "redirect:/blog/loginForm";
     }
+
+    @RequestMapping("register")
+    public String register(BlogUser blogUser){
+        blogUser.setAdmin(false);
+        blogUserService.save(blogUser);
+        return "redirect:/blog/loginForm";
+    }
 }

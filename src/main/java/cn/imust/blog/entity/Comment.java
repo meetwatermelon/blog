@@ -13,6 +13,9 @@ public class Comment {
     private String content;
     private Date date;
     private boolean flag;
+    //用户评论后管理员选择是否发表
+    private boolean report;
+
 
     @ManyToOne
     private BlogUser quser;
@@ -75,5 +78,13 @@ public class Comment {
 
     public void setArticle(Article article) {
         this.article = article;
+    }
+
+    public boolean isReport() {
+        return report;
+    }
+
+    public void setReport(boolean report) {
+        this.report = report;
     }
 }

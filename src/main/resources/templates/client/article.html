@@ -18,9 +18,9 @@
     <div class="container"><!--主要内容-->
         <div class="col-sm-9">
             <div class="panel"><!--显示文章-->
-                <div class="panel-heading" th:utext="${article.title}">
-                    <p class="page-header"></p>
-                </div>
+                <h3 class="panel-heading" th:utext="${article.title}">
+                </h3>
+                <p class="header"></p>
                 <div class="panel-body" th:utext="${article.content}">
                 </div>
 
@@ -45,8 +45,12 @@
 
                 <div class="media-body">
                     <div class="well well-lg">
-                        <h4 class="media-heading" th:if="${ comment.auser !=null }"><span th:text="${ comment.date }"></span>&nbsp;回复：<span th:text="${ comment.quser.uname }"></span></h4>
-                        <h4 class="media-heading" th:if="${ comment.auser ==null }"><span th:text="${ comment.date }"></span>&nbsp;评论</h4>
+                        <h4 class="media-heading" th:if="${ comment.auser !=null }"><span th:text="${ comment.date }">
+                          </span>&nbsp;回复：<span th:text="${ comment.quser.uname }"></span>
+                        </h4>
+                        <h4 class="media-heading" th:if="${ comment.auser ==null }">
+                            <span th:text="${ comment.date }"></span>&nbsp;评论
+                        </h4>
                         <span th:text="${ comment.content }"></span>
                     </div>
                     <button type="button" id="backButton" class="btn btn-default"
@@ -98,14 +102,14 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script>
-    function backButton(articleId, qid,quname,commentid) {
+    function backButton(articleId, qid, quname, commentid) {
         $("#atrid").val(articleId);
         $("#querid").val(qid);
         $("#myModalLabel").text("评论回复：" + quname);
         $("#commentid").val(commentid);
     }
 
-    function save(){
+    function save() {
         $("#commentBackForm").submit();
     }
 </script>

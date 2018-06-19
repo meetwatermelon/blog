@@ -11,12 +11,42 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
-<body>
+<body style="padding-top: 70px">
 <div class="container-fluid"><!-- container -->
     <div th:include="/client/head :: copy"></div><!--导航栏-->
     <div class="container"><!--主要内容-->
         <div class="col-sm-9">
-        </div>
+
+            <div id="pad-wrapper" class="gallery">
+                <div class="row header">
+                    <div class="col-md-12">
+                        <h3>Gallery</h3>
+                    </div>
+                </div>
+
+                <!-- gallery.html wrapper -->
+                <div class="gallery-wrapper">
+                    <div class="row gallery-row">
+                        <!-- single image -->
+                        <div class="col-md-3 img-container" th:each="album:${albums}">
+                            <a href="javascript:;" th:onclick="'javascript:dele(\''+${album.id}+'\');'">
+                                <div class="img-box">
+                                    <span class="icon trash">
+                                        <i class="gallery-trash"></i>
+                                    </span>
+                                    <img th:src="${album.name}" class="img-responsive"/>
+                                    <p class="title" th:text="${album.fileName}">
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end gallery.html wrapper -->
+
+            </div>
+        </div><!--主体内容-->
+
 
         <div class="col-lg-3">
             <div th:include="/client/right :: copy"></div><!--右侧导航栏-->

@@ -8,7 +8,7 @@
             <div class="col-sm-2 text-center navbar-left">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="logo" href="#" style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
+                        <a class="logo" href="/blog/admin" style="text-decoration: none">&nbsp;&nbsp;<span>Admin<span>LiYuan</span></span></a>
                     </li>
                 </ul>
 
@@ -30,7 +30,7 @@
                                 <i class="badge">3</i>
                             </a>
                         </li>
-                        <li>
+                        <li style="padding-top: 13px;padding-right: 40px">
                             <span th:if="${ session.user != null }">
                                 <a href="#" th:text="${session.user.uname}"></a>
                                     <a th:href="@{/user/logout}">退出</a>

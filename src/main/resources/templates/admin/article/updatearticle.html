@@ -23,7 +23,7 @@
             <!--富文本编辑器-->
             <div>
                 <textarea id="txt-content" placeholder="Balabala" autofocus></textarea>
-                <form>
+                <form th:action="@{/article/update}">
 
                     <input id="title" placeholder="请输入标题" name="title">
                     <select id="type" name="type">

@@ -66,12 +66,6 @@ public class ArticleController {
         return "redirect:/article/findarticle";
     }
 
-    @RequestMapping (value = "showCategory/{id}")
-    public String showCategory(@PathVariable int id,Model model){
-        List<Article> articles = articleService.getByCategoryID(id);
-        model.addAttribute("articles",articles);
-        return "client/categories";
-    }
 
     @PostMapping("addComment")
     public String addComment(Comment comment, HttpServletRequest request){
@@ -79,15 +73,16 @@ public class ArticleController {
         BlogUser user = (BlogUser)request.getSession().getAttribute("user");
         comment.setQuser(user);
         articleService.addComment(comment);
-        return "redirect:/article/findarticle";
+        return "redirect:/blog/index";
     }
-
+//这里有问题,普通用户回复和管理员回复跳转了一个页面
     @PostMapping("backComment")
     public String backComment(Comment comment,HttpServletRequest request){
         comment.setDate(new Date());
         BlogUser user = (BlogUser)request.getSession().getAttribute("user");
         comment.setAuser(user);
         articleService.backComment(comment);
-        return "redirect:/article/findarticle";
+        return "redirect:/comment/findAll";
     }
+
 }
