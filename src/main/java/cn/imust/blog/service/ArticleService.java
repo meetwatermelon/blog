@@ -1,8 +1,10 @@
 package cn.imust.blog.service;
 
 import cn.imust.blog.entity.Article;
+import cn.imust.blog.entity.Category;
 import cn.imust.blog.entity.Comment;
 import cn.imust.blog.repository.ArticleRepository;
+import cn.imust.blog.repository.CategoryRepository;
 import cn.imust.blog.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ArticleService {
     @Autowired private ArticleRepository articleRepository;
     @Autowired private CommentRepository commentRepository;
+    @Autowired private CategoryRepository categoryRepository;
 
     public void saveArticle(Article article){
         article.setDate(new Date());
@@ -57,6 +60,14 @@ public class ArticleService {
         // 保存新的回复信息
         comment.setId(null);
         commentRepository.save(comment);
+    }
+
+    public List<Article> findRecommendArticle() {
+        List<Category> categorys = categoryRepository.findByName("推荐文章");
+        if(categorys !=null && categorys.size() > 0){
+            return articleRepository.findByCategory(categorys.get(0));
+        }
+        return null;
     }
 
     //文章列表排序

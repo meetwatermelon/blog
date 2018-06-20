@@ -43,4 +43,11 @@ public class Category {
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Category() {
+    }
 }

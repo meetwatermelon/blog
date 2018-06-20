@@ -31,6 +31,8 @@ public class IndexController {
         List<Article> articles = articleService.findArticle();
         model.addAttribute("articles",articles);
 
+        List<Article> recommend = articleService.findRecommendArticle();
+        model.addAttribute("recommend",recommend);
 
         List<Category> categories = categoryService.findAll();
         model.addAttribute("categories",categories);
@@ -46,6 +48,8 @@ public class IndexController {
         List<Links> links = linksService.findAll();
         model.addAttribute("links",links);
         List<Category> categories = categoryService.findAll();
+        List<Article> recommend = articleService.findRecommendArticle();
+        model.addAttribute("recommend",recommend);
         model.addAttribute("categories",categories);
         return "client/article";
     }
@@ -58,6 +62,8 @@ public class IndexController {
         model.addAttribute("links",links);
         List<Album> albums = albumService.findAll();
         model.addAttribute("albums",albums);
+        List<Article> recommend = articleService.findRecommendArticle();
+        model.addAttribute("recommend",recommend);
         List<Category> categories = categoryService.findAll();
         model.addAttribute("categories",categories);
         return "/client/album";
@@ -75,6 +81,8 @@ public class IndexController {
         model.addAttribute("categories",categories);
         List<Article> categorys = articleService.getByCategoryID(id);
         model.addAttribute("categorys",categorys);
+        List<Article> recommend = articleService.findRecommendArticle();
+        model.addAttribute("recommend",recommend);
         return "client/categories";
     }
 }

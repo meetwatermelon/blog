@@ -8,7 +8,7 @@
         <h3>
             <p>推荐<span>文章</span></p>
         </h3>
-        <ul class="rank" th:each="article:${articles}" >
+        <ul class="rank" th:each="article:${ recommend }" >
             <li><a th:href="@{'/blog/showarticle/'+${article.id}}"><span th:utext="${article.title}"></span></a></li>
 
         </ul>
