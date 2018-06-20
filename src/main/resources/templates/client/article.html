@@ -27,12 +27,12 @@
             </div>
             <div>
                 <p class="page-header">评论</p>
-                <form action="/article/addComment" method="post">
+                <form id="backCommentForm" action="/article/addComment" method="post">
                     <input type="hidden" name="article.id" th:value="${article.id}">
                     <textarea id="content" name="content" class="form-control" rows="5"
                               style="max-width: 790px;"></textarea>
                     <br/>
-                    <input class="btn btn-default" type="submit" value="提交">
+                    <input id="backCommentFormSubmit" type="button" class="btn btn-default" value="提交">
                 </form>
             </div>
 
@@ -101,6 +101,8 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- layer -->
+<script th:src="@{/layer/layer.js}"></script>
 <script>
     function backButton(articleId, qid, quname, commentid) {
         $("#atrid").val(articleId);
@@ -112,6 +114,16 @@
     function save() {
         $("#commentBackForm").submit();
     }
+    $(function () {
+        $("#backCommentFormSubmit").click(function () {
+            if($("#content").val().length < 5){
+                layer.alert("请填写完整评论信息,再提交");
+            }else{
+                layer.alert("请等待管理员审核！")
+                setTimeout(function (){$("#backCommentForm").submit()},2000);
+            }
+        })
+    })
 </script>
 </body>
 </html>
