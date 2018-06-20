@@ -38,7 +38,9 @@
 <!--                        <li><a href="#" th:text="${session.user.uname}">登录</a></li>
                         <li><a href="#">注册</a></li>-->
                         <span th:if="${session.user!=null }">
-                                <li><a href="#" th:text="${session.user.uname}"></a>
+                                <li>
+                                    <a th:if="${session.user.admin }" href="/blog/admin" th:text="${session.user.uname}"></a>
+                                    <a th:if="${!session.user.admin }" href="/blog/index" th:text="${session.user.uname}"></a>
                                 <a th:href="@{/user/logout}">退出</a></li>
                             </span>
                         <span th:if="${session.user==null }">
