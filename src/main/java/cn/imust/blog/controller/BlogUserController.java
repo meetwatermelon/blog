@@ -27,8 +27,7 @@ public class BlogUserController {
                 return "redirect:/blog/index";
             }
         }else{
-            request.setAttribute("error","用户名或密码错误!");
-            return "/blog/loginForm";
+            return "redirect:/blog/loginForm";
         }
     }
 

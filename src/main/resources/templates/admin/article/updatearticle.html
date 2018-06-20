@@ -23,13 +23,14 @@
             <!--富文本编辑器-->
             <div>
                 <textarea id="txt-content" placeholder="Balabala" autofocus></textarea>
-                <form th:action="@{/article/update}">
-
+                <form id="articleUpdateForm" th:action="@{/article/update}" method="post">
+                    <input name="id" th:value="${article.id}" type="hidden">
                     <input id="title" placeholder="请输入标题" name="title">
-                    <select id="type" name="type">
-
-                        <option value="0">生活</option>
-                        <option value="1">事业</option>
+                    <input id="content" name="content" type="hidden">
+                    <select id="type" name="category.id">
+                        <span th:each="categories:${categories}">
+                            <option th:value="${categories.id}" th:text="${categories.name}"></option>
+                        </span>
                     </select>
                     <input id="btn" type="button" value="提交" >
                 </form>
@@ -92,19 +93,8 @@
             }
             $("#btn").click(function(){
                 var editor_val = editor.getValue();
-                var title_val = $("#title").val();
-                var type_val = $("#type").val();
-                var data =  {
-                    'editor_val': editor_val,
-                    'title': title_val,
-                    'type': type_val
-                }
-                $.post(
-                    'upload', data
-                    ,function(){
-
-                    }
-                );
+                $("#content").val(editor_val);
+                $("#articleUpdateForm").submit();
             });
         });
     }).call(this);
