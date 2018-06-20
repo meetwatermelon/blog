@@ -7,6 +7,10 @@ import cn.imust.blog.repository.ArticleRepository;
 import cn.imust.blog.repository.CategoryRepository;
 import cn.imust.blog.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -29,8 +33,11 @@ public class ArticleService {
         articleRepository.delete(id);
     }
 
-    public List<Article> findArticle(){
-        return articleRepository.findAll();
+    public Page<Article> findArticle(int page,int pageSize){
+        Sort sort = new Sort(Sort.Direction.DESC,"date");
+        Pageable pageable = new PageRequest(page,pageSize,sort);
+        Page<Article> all = articleRepository.findAll(pageable);
+        return all;
     }
 
     public Article getOneArticle(int id){

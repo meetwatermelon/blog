@@ -9,10 +9,12 @@ import cn.imust.blog.service.ArticleService;
 import cn.imust.blog.service.CategoryService;
 import cn.imust.blog.service.LinksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.List;
 
 @Controller
@@ -28,7 +30,7 @@ public class IndexController {
         List<Links> links = linksService.findAll();
         model.addAttribute("links",links);
 
-        List<Article> articles = articleService.findArticle();
+        Page<Article> articles = articleService.findArticle(1,5);
         model.addAttribute("articles",articles);
 
         List<Article> recommend = articleService.findRecommendArticle();
@@ -43,7 +45,7 @@ public class IndexController {
     public String showArticle(@PathVariable int id,Model model){
         Article article = articleService.getOneArticle(id);
         model.addAttribute("article",article);
-        List<Article> articles = articleService.findArticle();
+        Page<Article> articles = articleService.findArticle(1,5);
         model.addAttribute("articles",articles);
         List<Links> links = linksService.findAll();
         model.addAttribute("links",links);
@@ -56,7 +58,7 @@ public class IndexController {
 
     @RequestMapping(value = "gallerys")
     public String showPhoto(Model model){
-        List<Article> articles = articleService.findArticle();
+        Page<Article> articles = articleService.findArticle(1,5);
         model.addAttribute("articles",articles);
         List<Links> links = linksService.findAll();
         model.addAttribute("links",links);
@@ -71,7 +73,7 @@ public class IndexController {
 
     @RequestMapping (value = "showCategory/{id}")
     public String showCategory(@PathVariable int id,Model model){
-        List<Article> articles = articleService.findArticle();
+        Page<Article> articles = articleService.findArticle(1,5);
         model.addAttribute("articles",articles);
         List<Links> links = linksService.findAll();
         model.addAttribute("links",links);
