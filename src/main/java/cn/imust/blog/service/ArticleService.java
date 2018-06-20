@@ -31,7 +31,10 @@ public class ArticleService {
     }
 
     public Article getOneArticle(int id){
-        return articleRepository.getOne(id);
+        Article one = articleRepository.getOne(id);
+        List<Comment> byReportIsFalseAndArticle = commentRepository.findByReportAndArticle(true,one);
+        one.setComments(byReportIsFalseAndArticle);
+        return one;
     }
 
     public void updateArticle(Article article){

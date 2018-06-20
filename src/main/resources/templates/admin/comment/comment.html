@@ -47,6 +47,7 @@
                                    '\''+${comment.id}+'\',\''+${comment.quser.id}+'\',\''+${comment.content}+'\');'"
                                 >回复</a>&nbsp;&nbsp;&nbsp;
                                 <a href="javascript:;" th:onclick="'javascript:dele(\''+${ comment.id }+'\');'">删除</a>
+                                <a th:if="${ !comment.report }" href="javascript:;" th:onclick="'javascript:report(\''+${ comment.id }+'\');'">发表</a>
                             </td>
                         </tr>
                         </tbody>
@@ -117,6 +118,10 @@
         }, function () {
             // layer.msg('反悔', {icon: 1});
         });
+    }
+
+    function report(id) {
+        window.location.href = "/comment/report/" + id;
     }
     function backButton(quname,articleId,commentid,qid,content) {
         $("#atrid").val(articleId);
